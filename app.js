@@ -1,6 +1,5 @@
 import express from 'express'
 import cors from 'cors';
-import HelloController from "./controllers/hello-controller.js"
 import UserController from "./users/users-controller.js"
 import TuitsController from "./controllers/tuits/tuits-controller.js";
 import session from "express-session";
@@ -27,7 +26,7 @@ app.use(
 );
 TuitsController(app);
 ProductController(app);
-HelloController(app);
+
 UserController(app);
 AuthController(app);
 app.listen(process.env.PORT || 4000)

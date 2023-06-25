@@ -4,13 +4,7 @@ import * as tuitsDao from './tuits-dao.js';
 const createTuit = async (req, res) => {
     const newTuit = req.body;
     newTuit.likes = 0;
-    newTuit.liked = false;
-    newTuit.image = "nasa.png";
-    newTuit.dislikes=0;
-    newTuit.disliked=false;
-    newTuit.retuits=0;
-    newTuit.replies = 0;
-    newTuit.time="now";
+    newTuit.time=new Date().toLocaleDateString();
     newTuit.handle="@nasa";
     newTuit.topic="latest";
     newTuit.title=newTuit.tuit;

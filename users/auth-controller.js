@@ -51,11 +51,30 @@ const AuthController = (app) => {
   usersDao.updateUser(req.body._id,req.body)
 
 };
+const getUserCompanyName = async (req, res) => {
+  const userId = req.params.id;
+
+  try {
+    const user = await usersDao.findUserById(userId);
+    if (user) {
+      const companyName = user.companyName;
+      const prod = user.products
+      res.json({ companyName, prod });
+    } else {
+      res.sendStatus(404);
+    }
+  } catch (error) {
+    console.error("Error retrieving user's company name:", error);
+    res.sendStatus(500);
+  }
+};
+
 
  app.post("/api/users/register", register);
  app.post("/api/users/login",    login);
  app.post("/api/users/profile",  profile);
  app.post("/api/users/logout",   logout);
+ app.get("/api/users/:id/company", getUserCompanyName);
 };
 export default AuthController;
 

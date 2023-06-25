@@ -21,4 +21,12 @@ export const createProduct = async (product, userId) => {
 
 export const deleteProductByFoodId = (foodId) => {
   return productmodel.deleteOne({ foodId });
+
+}
+export const addReviewToProduct = async (foodId, review) => {
+  console.log(foodId)
+  const product = await productmodel.findOne({ foodId });
+  product.reviews.push(review);
+  await product.save();
+  return product;
 }

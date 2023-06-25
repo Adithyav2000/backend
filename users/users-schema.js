@@ -25,6 +25,25 @@ const usersSchema = new mongoose.Schema({
       return this.userType === "seller" ? [/* default product object */] : undefined;
     },
   },
+  cart: {
+    type: [Object],
+    default: function () {
+      return this.userType === "normal" ? [/* default product object */] : undefined;
+    },
+  },
+  bought: {
+    type: [Object],
+    default: function () {
+      return this.userType === "normal" ? [/* default product object */] : undefined;
+    },
+  },
+  reviews: {
+    type: [Object],
+    default: function () {
+      return this.userType === "normal" ? [/* default product object */] : undefined;
+    },
+  },
+  
 });
 
 export default usersSchema;

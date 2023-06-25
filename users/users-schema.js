@@ -19,28 +19,37 @@ const usersSchema = new mongoose.Schema({
   fitnessGoalWeight: String,
   height: String,
   weight: String,
+  age:Number,
+  gender:String,
   products: {
     type: [Object],
     default: function () {
-      return this.userType === "seller" ? [/* default product object */] : undefined;
+      return this.userType === "seller" ? [] : undefined;
     },
   },
   cart: {
     type: [Object],
     default: function () {
-      return this.userType === "normal" ? [/* default product object */] : undefined;
+      return this.userType === "normal" ? [] : undefined;
     },
   },
   bought: {
     type: [Object],
     default: function () {
-      return this.userType === "normal" ? [/* default product object */] : undefined;
+      return this.userType === "normal" ? [] : undefined;
     },
   },
   reviews: {
     type: [Object],
     default: function () {
-      return this.userType === "normal" ? [/* default product object */] : undefined;
+      return this.userType === "normal" ? [] : undefined;
+    },
+  },
+
+  log: {
+    type: [Object],
+    default: function () {
+      return this.userType === "logger" ? [] : undefined;
     },
   },
   

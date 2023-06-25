@@ -3,14 +3,15 @@ import * as tuitsDao from './tuits-dao.js';
 
 const createTuit = async (req, res) => {
     const newTuit = req.body;
+    console.log(req.body)
     newTuit.likes = 0;
     newTuit.time=new Date().toLocaleDateString();
-    newTuit.handle="@nasa";
-    newTuit.topic="latest";
+    newTuit.handle="@"+req.body.companyName;
+    newTuit.topic=req.body.topic;
     newTuit.title=newTuit.tuit;
-    newTuit.userName="Nasa";
-
-
+    newTuit.userName=req.body.companyName;
+    newTuit.image=req.body.imageUrl
+    
     const insertedTuit = await tuitsDao.createTuit(newTuit);
     res.json(insertedTuit);
   }

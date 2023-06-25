@@ -7,7 +7,7 @@ import AuthController from "./users/auth-controller.js";
 import ProductController from "./product/controller.js"
 import mongoose from "mongoose";
 
-const CONNECTION_STRING = 'mongodb://127.0.0.1:27017/tuiter'
+const CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 mongoose.connect(CONNECTION_STRING);
 const app = express()
 app.use(
